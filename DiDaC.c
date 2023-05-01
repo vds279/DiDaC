@@ -1,6 +1,6 @@
 /************************************************\
  ------------------------------------------------
-                VDS-Engine (UCI-compatible)
+                DiDaC (UCI-compatible)
  ------------------------------------------------
 \************************************************/
 
@@ -1789,8 +1789,8 @@ void uci()
 	char line[inputBuffer];
 
     // PRINT ENGINE INFO
-	printf("id name vds\n");
-	printf("id author Vedant\n");
+	printf("id name DiDaC\n");
+	printf("id author vds\n");
 	printf("uciok\n");
 	
 	// MAIN LOOP
