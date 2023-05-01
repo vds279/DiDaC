@@ -1814,8 +1814,8 @@ void uci()
 		if (!strncmp(line, "uci", 3))
 		{
 		    // print engine info
-			printf("id name vds\n");
-			printf("id author Vedant\n");
+			printf("id name DiDaC\n");
+			printf("id author vds\n");
 			printf("uciok\n");
 		}
 		
