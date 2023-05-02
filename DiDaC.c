@@ -11,6 +11,8 @@
 #include "sys/select.h"
 #include "string.h"
 
+// ****BEGIN ADAPTED CODE (Adapted to C-Language from Source: https://github.com/maksimKorzh/wukongJS)****
+
 // FEN START POSITION
 #define startingFEN "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1 "
 
@@ -72,7 +74,11 @@ int promoted_pieces[] = {
     [n] = 'n',
 };
 
-// MATERIAL SCORE (from https://www.chessprogramming.org/Simplified_Evaluation_Function)
+// ****END ADAPTED CODE****
+
+//***BEGIN ORIGINAL CODE***
+
+// MATERIAL SCORE (using values from Tomasz Michniewski's Simplified Evaluation from https://www.chessprogramming.org/Simplified_Evaluation_Function)
 
 int material_score[13] = {
       0,      // empty square score
@@ -91,9 +97,13 @@ int material_score[13] = {
     
 };
 
+//***END ORIGINAL CODE***
+
+// ****BEGIN ADAPTED CODE (Adapted to C-Language from Source: https://github.com/maksimKorzh/wukongJS)****
+
 /************************************************\
  ------------------------------------------------
-    CASTLING BINARY REPRESENTATION (Inspired from maksimKorzh/wukongJS)
+    CASTLING BINARY REPRESENTATION 
  ------------------------------------------------
 \************************************************/
 
@@ -134,6 +144,10 @@ int castling_rights[128] = {
     15, 15, 15, 15, 15, 15, 15, 15,  o, o, o, o, o, o, o, o,
     13, 15, 15, 15, 12, 15, 15, 14,  o, o, o, o, o, o, o, o
 };
+
+// ****END ADAPTED CODE****
+
+//***BEGIN ORIGINAL CODE***
 
 /************************************************\
  ------------------------------------------------
@@ -210,6 +224,11 @@ const int king_score[128] =
 
 };
 
+//***END ORIGINAL CODE***
+// ****BEGIN ADAPTED CODE (Adapted to C-Language from Source: https://github.com/maksimKorzh/wukongJS)****
+
+//
+
 // mirror positional score tables for opposite side
 const int mirror_score[128] =
 {
@@ -235,6 +254,7 @@ int board[128] = {
     P, P, P, P, P, P, P, P,  o, o, o, o, o, o, o, o,
     R, N, B, Q, K, B, N, R,  o, o, o, o, o, o, o, o
 };
+
 
 /************************************************\
  ------------------------------------------------
@@ -402,7 +422,7 @@ void reset_board()
 }
 
 // parse FEN (Inspired from maksimKorzh/wukongJS Lines 1800 onwarcs)
-void parse_fen(char *fen)
+void parse_fen(char *fenString)
 {
     // RESET BOARD
     reset_board();
@@ -420,27 +440,27 @@ void parse_fen(char *fen)
             if (!(square & 0x88))
             {
                 // MATCH PIECES
-                if ((*fen >= 'a' && *fen <= 'z') || (*fen >= 'A' && *fen <= 'Z'))
+                if ((*fenString >= 'a' && *fenString <= 'z') || (*fenString >= 'A' && *fenString <= 'Z'))
                 {
                     // SET UP KINGS' SQUARES
-                    if (*fen == 'K')
+                    if (*fenString == 'K')
                         king_square[white] = square;
                     
-                    else if (*fen == 'k')
+                    else if (*fenString == 'k')
                         king_square[black] = square;
                     
                     // SET THE PIECE ON BOARD
-                    board[square] = char_pieces[*fen];
+                    board[square] = char_pieces[*fenString];
                     
                     // INCREMENT FEN POINTER
-                    *fen++;
+                    *fenString++;
                 }
                 
                 // MATCH EMPTY SQUARES
-                if (*fen >= '0' && *fen <= '9')
+                if (*fenString >= '0' && *fenString <= '9')
                 {
                     // CALCULATE OFFSET
-                    int offset = *fen - '0';
+                    int offset = *fenString - '0';
                     
                     // DECREMENT FILE ON EMPTY SQUARES
                     if (!(board[square]))
@@ -450,31 +470,31 @@ void parse_fen(char *fen)
                     file += offset;
                     
                     // increment FEN pointer
-                    *fen++;
+                    *fenString++;
                 }
                 
                 // match end of rank
-                if (*fen == '/')
+                if (*fenString == '/')
                     // increment FEN pointer
-                    *fen++;
+                    *fenString++;
                 
             }
         }
     }
     
     // go to side parsing
-    *fen++;
+    *fenString++;
     
     // parse side to move
-    side = (*fen == 'w') ? white : black;
+    side = (*fenString == 'w') ? white : black;
     
     // go to castling rights parsing
-    fen += 2;
+    fenString += 2;
     
     // parse castling rights
-    while (*fen != ' ')
+    while (*fenString != ' ')
     {
-        switch(*fen)
+        switch(*fenString)
         {
             case 'K': castle |= KC; break;
             case 'Q': castle |= QC; break;
@@ -484,18 +504,18 @@ void parse_fen(char *fen)
         }
         
         // increment pointer
-        *fen++;
+        *fenString++;
     }
     
     // got to empassant square
-    *fen++;
+    *fenString++;
     
     // parse empassant square
-    if (*fen != '-')
+    if (*fenString != '-')
     {
         // parse enpassant square's file & rank
-        int file = fen[0] - 'a';
-        int rank = 8 - (fen[1] - '0');
+        int file = fenString[0] - 'a';
+        int rank = 8 - (fenString[1] - '0');
         
         // set up enpassant square
         enpassant = rank * 16 + file;
