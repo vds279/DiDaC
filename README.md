@@ -31,9 +31,9 @@ Lot of sources have influenced me and the code. These include YouTube creators s
 
 ## Citations
 
-Korzh, M. (2021). Playlists Chess Programming. YouTube. Retrieved May 1, 2023, from [https://www.youtube.com/playlist?list=PLmN0neTso3JyHz4YvcQrfS7pd9pC_BFBc]
-Allbert, R. (2013). Playlists [YouTube channel]. YouTube. Retrieved May 1, 2023, from [https://www.youtube.com/playlist?list=PLZ1QII7yudbc-Ky058TEaOstZHVbT-2hg]
-Korzh, M. (2021). Wukong JS: Didactic javascript chess engine. Ukraine: GitHub; [accessed May 1, 2023]. (https://github.com/maksimKorzh/wukongJS)
-Korzh, M. (2021). Wukong: Modular & didactic UCI chess engine written by Code Monkey King. Ukraine: GitHub; [accessed May 1, 2023]. [https://github.com/maksimKorzh/wukong]
-Allbert, R. (2013). Vice: Repo for the Vice chess engine series on YouTube. GitHub; accessed May 1, 2023. https://github.com/bluefeversoft/vice/tree/main.
+1. Korzh, M. (2021). Playlists Chess Programming. YouTube. Retrieved May 1, 2023, from [https://www.youtube.com/playlist?list=PLmN0neTso3JyHz4YvcQrfS7pd9pC_BFBc]
+2. Allbert, R. (2013). Playlists [YouTube channel]. YouTube. Retrieved May 1, 2023, from [https://www.youtube.com/playlist?list=PLZ1QII7yudbc-Ky058TEaOstZHVbT-2hg]
+3. Korzh, M. (2021). Wukong JS: Didactic javascript chess engine. Ukraine: GitHub; [accessed May 1, 2023]. (https://github.com/maksimKorzh/wukongJS)
+4. Korzh, M. (2021). Wukong: Modular & didactic UCI chess engine written by Code Monkey King. Ukraine: GitHub; [accessed May 1, 2023]. [https://github.com/maksimKorzh/wukong]
+5. Allbert, R. (2013). Vice: Repo for the Vice chess engine series on YouTube. GitHub; accessed May 1, 2023. [https://github.com/bluefeversoft/vice/tree/main].
 
