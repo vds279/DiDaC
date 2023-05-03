@@ -28,3 +28,12 @@ There is just one C file titled "DiDaC.c". It entails all search, evaluation and
 ## Acknowledgements
 
 Lot of sources have influenced me and the code. These include YouTube creators such as BlueFeverSoftware, especially through his "Vice" Chess Engine series, where he discussed extensively how to implement the optimizations as well as live demos of playing it against other engines through WinBoard (which helped me a lot!). Next comes the "Wukong.JS" series by Maksim Korzh. This pretty much provided the entire skeleton for my project, saving me countless hours of work, although it was in a different Javascript language. I've cited sources from Chess Programming Wiki (e.g. their pseudocode for Quiescence search) as well as StackExchange threads throughout my code (citations usually start as "Adapted/Inspired from..." etc). 
+
+## Citations
+
+Korzh, M. (2021). Playlists Chess Programming. YouTube. Retrieved May 1, 2023, from [https://www.youtube.com/playlist?list=PLmN0neTso3JyHz4YvcQrfS7pd9pC_BFBc]
+Allbert, R. (2013). Playlists [YouTube channel]. YouTube. Retrieved May 1, 2023, from [https://www.youtube.com/playlist?list=PLZ1QII7yudbc-Ky058TEaOstZHVbT-2hg]
+Korzh, M. (2021). Wukong JS: Didactic javascript chess engine. Ukraine: GitHub; [accessed May 1, 2023]. (https://github.com/maksimKorzh/wukongJS)
+Korzh, M. (2021). Wukong: Modular & didactic UCI chess engine written by Code Monkey King. Ukraine: GitHub; [accessed May 1, 2023]. [https://github.com/maksimKorzh/wukong]
+Allbert, R. (2013). Vice: Repo for the Vice chess engine series on YouTube. GitHub; accessed May 1, 2023. https://github.com/bluefeversoft/vice/tree/main.
+
