@@ -11,7 +11,8 @@
 #include "sys/select.h"
 #include "string.h"
 
-// ****BEGIN ADAPTED CODE (Adapted to C-Language from Source: https://github.com/maksimKorzh/wukongJS)****
+// Adapted to C-Language from Source: https://github.com/maksimKorzh/wukongJS)****
+
 
 // FEN START POSITION
 #define startingFEN "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1 "
@@ -74,8 +75,6 @@ int promoted_pieces[] = {
     [n] = 'n',
 };
 
-// ****END ADAPTED CODE****
-
 //***BEGIN ORIGINAL CODE***
 
 // MATERIAL SCORE (using values from Tomasz Michniewski's Simplified Evaluation from https://www.chessprogramming.org/Simplified_Evaluation_Function)
@@ -99,7 +98,7 @@ int material_score[13] = {
 
 //***END ORIGINAL CODE***
 
-// ****BEGIN ADAPTED CODE (Adapted to C-Language from Source: https://github.com/maksimKorzh/wukongJS)****
+// Adapted to C-Language from Source: https://github.com/maksimKorzh/wukongJS)****
 
 /************************************************\
  ------------------------------------------------
@@ -145,7 +144,6 @@ int castling_rights[128] = {
     13, 15, 15, 15, 12, 15, 15, 14,  o, o, o, o, o, o, o, o
 };
 
-// ****END ADAPTED CODE****
 
 //***BEGIN ORIGINAL CODE***
 
@@ -225,7 +223,7 @@ const int king_score[128] =
 };
 
 //***END ORIGINAL CODE***
-// ****BEGIN ADAPTED CODE (Adapted to C-Language from Source: https://github.com/maksimKorzh/wukongJS)****
+// (Adapted to C-Language from Source: https://github.com/maksimKorzh/wukongJS)****
 
 //
 
@@ -331,6 +329,7 @@ char *square_to_coords[] = {
     "a1", "b1", "c1", "d1", "e1", "f1", "g1", "h1", "i1", "j1", "k1", "l1", "m1", "n1", "o1", "p1"
 };
 
+//****END ADAPTED CODE****
 /***********************************************\
 
                  BOARD FUNCTIONS 
@@ -368,15 +367,7 @@ void print_board()
     
     // PRINT COLUMNS
     printf("\n    a b c d e f g h\n\n");
-    
-    // PRINT BOARD STATS
-    printf("    Side:     %s\n", (side == white) ? "white": "black");
-    printf("    Castling:  %c%c%c%c\n", (castle & KC) ? 'K' : '-', 
-                                        (castle & QC) ? 'Q' : '-',
-                                        (castle & kc) ? 'k' : '-',
-                                        (castle & qc) ? 'q' : '-');
-    printf("    Enpassant:   %s\n", (enpassant == no_sq)? "no" : square_to_coords[enpassant]);
-    printf("    King square: %s\n\n", square_to_coords[king_square[side]]);
+   
 }
 
 // PRINT MOVE LIST
@@ -559,7 +550,7 @@ typedef struct {
 
 \***********************************************/
 
-// IS SQUARE ATTACKED (Inspired from Attack.c from Vice : https://github.com/bluefeversoft/vice/blob/main/Vice11/src/attack.c))
+// IS SQUARE ATTACKED (Adaped from Attack.c from Vice : https://github.com/bluefeversoft/vice/blob/main/Vice11/src/attack.c))
 static inline int is_square_attacked(int square, int side) 
 {
     // PAWN ATTACKS
@@ -1116,6 +1107,7 @@ static inline int make_move(int move, int capture_flag)
         int enpass = get_move_enpassant(move);
         int double_push = get_move_pawn(move);
         int castling = get_move_castling(move);
+	    
         
         // MOVE PIECE
         board[to_square] = board[from_square];
@@ -1318,7 +1310,7 @@ static inline void perft_test(int depth)
                EVALUATION FUNCTION
 
 \***********************************************/
-
+//	****BEGIN ORIGINAL CODE****
 // EVALUATION OF THE POSITION
 static inline int evaluate_position()
 {
@@ -1380,6 +1372,7 @@ static inline int evaluate_position()
     // RETURN POSITIVE SCORE FOR WHITE & NEGATIVE FOR BLACK
     return !side ? score : -score;
 }
+//	****END ORIGINAL CODE****
 
 
 /***********************************************\
@@ -1517,14 +1510,14 @@ static inline int quiescence_search(int alpha, int beta, int depth)
     nodes++;
     
     // evaluate position
-    int eval = evaluate_position();
+    int score = evaluate_position();
     
     //  fail hard beta-cutoff
-    if (eval >= beta)
+    if (score >= beta)
         return beta;
 
     // alpha acts like max in MiniMax
-    if (eval > alpha)
+    if (score > alpha)
         alpha = eval;
 
     // create move list variable
@@ -1545,7 +1538,7 @@ static inline int quiescence_search(int alpha, int beta, int depth)
         // increment ply
         ply++;
         
-        // make only legal moves
+        // ONLY CONSIDER CAPTURES
         if (!make_move(move_list->moves[count], only_captures))
         {
             // decrement ply
@@ -1575,6 +1568,7 @@ static inline int quiescence_search(int alpha, int beta, int depth)
         
     // return alpha score
     return alpha;
+	
 }
 
 // negamax search (adapted from https://stackoverflow.com/questions/65750233/what-is-the-difference-between-minimax-and-negamax)
@@ -1808,6 +1802,7 @@ void uci()
     // init input buffer
 	char line[inputBuffer];
 
+//	****BEGIN ORIGINAL CODE****
     // PRINT ENGINE INFO
 	printf("id name DiDaC\n");
 	printf("id author vds\n");
@@ -1838,6 +1833,8 @@ void uci()
 			printf("id author vds\n");
 			printf("uciok\n");
 		}
+		
+		// *** END ORIGINAL CODE****
 		
 		// PARSE "ISREADY" COMMAND
 		else if(!strncmp(line, "isready", 7))
@@ -1963,14 +1960,19 @@ void uci()
 			search_position(depth);
 		}
 		
+		// ***BEGIN ORIGINAL CODE***///
+		
 		// IF depth is not specified, then use fixed 6 plies or 3 moves. 
 		else if (!strncmp(line, "go", 2))
-			// search 6 ply
-			search_position(6);
+			// search 8 ply fixed
+			search_position(8);
 		
 		// parse "quit" command
 		else if(!strncmp(line, "quit", 4))
 			break;
+		
+		// ***END ORIGINAL CODE***///
+	
 	}
 }
 
