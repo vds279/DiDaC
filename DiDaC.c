@@ -1501,7 +1501,7 @@ static inline void sort_moves(moves *move_list)
     }    
 }
 
-// quiescence search (adapted from Chess Programming Wiki article and pseudocode: https://www.chessprogramming.org/Quiescence_Search)
+// quiescence search (for better understanding, I looked at Chess Programming Wiki article and pseudocode: https://www.chessprogramming.org/Quiescence_Search)
 static inline int quiescence_search(int alpha, int beta, int depth)
 {
     // update nodes count
@@ -1569,7 +1569,7 @@ static inline int quiescence_search(int alpha, int beta, int depth)
 	
 }
 
-// negamax search (adapted from https://stackoverflow.com/questions/65750233/what-is-the-difference-between-minimax-and-negamax)
+// negamax search (for better understanding, I looked at https://stackoverflow.com/questions/65750233/what-is-the-difference-between-minimax-and-negamax)
 static inline int negamax_search(int alpha, int beta, int depth)
 {       
     // legal moves
