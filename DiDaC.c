@@ -75,7 +75,7 @@ int promoted_pieces[] = {
     [n] = 'n',
 };
 
-//***BEGIN ORIGINAL CODE***
+//***BEGIN DERIVED CODE (changes to material score based on online research)***
 
 // MATERIAL SCORE (using values from Tomasz Michniewski's Simplified Evaluation from https://www.chessprogramming.org/Simplified_Evaluation_Function)
 
@@ -96,7 +96,7 @@ int material_score[13] = {
     
 };
 
-//***END ORIGINAL CODE***
+//***END DERIVED CODE***
 
 // Copied from Wukong.c by Maksim Korzh
 
@@ -145,7 +145,7 @@ int castling_rights[128] = {
 };
 
 
-//***BEGIN ORIGINAL CODE***
+//***BEGIN DERIVED CODE (changes to original PSTs based on Tomasz Michniewski's work)***
 
 /************************************************\
  ------------------------------------------------
@@ -222,7 +222,7 @@ const int king_score[128] =
 
 };
 
-//***END ORIGINAL CODE***
+//***END DERIVED CODE***
 // Copied from Wukong.c by Maksim Korzh
 
 //
@@ -1308,7 +1308,7 @@ static inline void perft_test(int depth)
                EVALUATION FUNCTION
 
 \***********************************************/
-//	****BEGIN ORIGINAL CODE****
+// Copied from Wukong.c by Maksim Korzh
 // EVALUATION OF THE POSITION
 static inline int evaluate_position()
 {
@@ -1370,7 +1370,7 @@ static inline int evaluate_position()
     // RETURN POSITIVE SCORE FOR WHITE & NEGATIVE FOR BLACK
     return !side ? score : -score;
 }
-//	****END ORIGINAL CODE****
+//
 
 
 /***********************************************\
@@ -1380,7 +1380,7 @@ static inline int evaluate_position()
 
 \***********************************************/
 
-// most valuable victim & less valuable attacker((// Mostly Copied from Wukong.c by Maksim Korzh))
+// most valuable victim & less valuable attacker((// Copied from Wukong.c by Maksim Korzh))
 
 /*
                           
@@ -1800,7 +1800,7 @@ void uci()
     // init input buffer
 	char line[inputBuffer];
 
-//	****BEGIN ORIGINAL CODE****
+//	****BEGIN DERIVED CODE (made changes to UCI driver for XBoard to recognize as DiDaC)****
     // PRINT ENGINE INFO
 	printf("id name DiDaC\n");
 	printf("id author vds\n");
@@ -1832,7 +1832,7 @@ void uci()
 			printf("uciok\n");
 		}
 		
-		// *** END ORIGINAL CODE****
+		// *** END DERIVED CODE****
 		
 		// PARSE "ISREADY" COMMAND
 		else if(!strncmp(line, "isready", 7))
@@ -1958,7 +1958,7 @@ void uci()
 			search_position(depth);
 		}
 		
-		// ***BEGIN ORIGINAL CODE***///
+		// ***BEGIN DERIVED CODE (changed fixed search to 8 ply instead of 6 in the original)***///
 		
 		// IF depth is not specified, then use fixed 6 plies or 3 moves. 
 		else if (!strncmp(line, "go", 2))
@@ -1969,7 +1969,7 @@ void uci()
 		else if(!strncmp(line, "quit", 4))
 			break;
 		
-		// ***END ORIGINAL CODE***///
+		// ***END DERIVED CODE***///
 	
 	}
 }
