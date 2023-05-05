@@ -11,7 +11,7 @@
 #include "sys/select.h"
 #include "string.h"
 
-// Adapted to C-Language from Source: https://github.com/maksimKorzh/wukongJS)****
+// Copied from Wukong.c by Maksim Korzh
 
 
 // FEN START POSITION
@@ -98,7 +98,7 @@ int material_score[13] = {
 
 //***END ORIGINAL CODE***
 
-// Adapted to C-Language from Source: https://github.com/maksimKorzh/wukongJS)****
+// Copied from Wukong.c by Maksim Korzh
 
 /************************************************\
  ------------------------------------------------
@@ -223,7 +223,7 @@ const int king_score[128] =
 };
 
 //***END ORIGINAL CODE***
-// (Adapted to C-Language from Source: https://github.com/maksimKorzh/wukongJS)****
+// Copied from Wukong.c by Maksim Korzh
 
 //
 
@@ -328,8 +328,6 @@ char *square_to_coords[] = {
     "a2", "b2", "c2", "d2", "e2", "f2", "g2", "h2", "i2", "j2", "k2", "l2", "m2", "n2", "o2", "p2",
     "a1", "b1", "c1", "d1", "e1", "f1", "g1", "h1", "i1", "j1", "k1", "l1", "m1", "n1", "o1", "p1"
 };
-
-//****END ADAPTED CODE****
 /***********************************************\
 
                  BOARD FUNCTIONS 
@@ -1202,7 +1200,7 @@ static inline int make_move(int move, int capture_flag)
 
 /***********************************************\
 
-                  PERFT FUNCTIONS (adapted from wukong.js (lines 842 onwards) https://github.com/maksimKorzh/wukongJS/blob/main/wukong.js)
+                  PERFT FUNCTIONS (Mostly Copied from Wukong.c by Maksim Korzh)
 
 \***********************************************/
 
@@ -1382,7 +1380,7 @@ static inline int evaluate_position()
 
 \***********************************************/
 
-// most valuable victim & less valuable attacker((adapted from wukong.js (lines 1344 onwards) https://github.com/maksimKorzh/wukongJS/blob/main/wukong.js))
+// most valuable victim & less valuable attacker((// Mostly Copied from Wukong.c by Maksim Korzh))
 
 /*
                           
