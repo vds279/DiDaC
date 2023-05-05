@@ -1,5 +1,5 @@
 # DiDac
-This project is a semester-long attempt to build a competitive chess engine in C, as well as including/comparing search optimatizations and their effect on the efficiency of the resultant engine. As the purpose of the engine is didactic, i.e. accessible and well-formulated code available to all seekers, its name is simply DiDaC.
+This code is essentially a fork of Maksim Korzh's Wukong.c and is part of a semester-long project of  including/comparing search optimatizations and their effect on the efficiency of the resultant engine. As the purpose of the engine, and the original Wukong.c, is didactic, i.e. accessible and well-formulated code available to all seekers, its name is simply DiDaC.
 
 ## What are the main features of DiDaC?
 
