@@ -548,7 +548,7 @@ typedef struct {
 
 \***********************************************/
 
-// IS SQUARE ATTACKED (Adaped from Attack.c from Vice : https://github.com/bluefeversoft/vice/blob/main/Vice11/src/attack.c))
+// IS SQUARE ATTACKED (Also looked at Attack.c from Vice : https://github.com/bluefeversoft/vice/blob/main/Vice11/src/attack.c))
 static inline int is_square_attacked(int square, int side) 
 {
     // PAWN ATTACKS
